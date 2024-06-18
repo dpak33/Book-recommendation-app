@@ -2,8 +2,8 @@ from flask import Flask
 from flask_migrate import Migrate
 from models.models import db
 from routes.home import home_bp
-from routes.nlp_test import nlp_test_bp
 from routes.search import search_bp
+from routes.book_routes import book_bp
 
 app = Flask(__name__)
 app.config.from_object('config.Config')
@@ -11,8 +11,9 @@ app.config.from_object('config.Config')
 db.init_app(app)
 migrate = Migrate(app, db)
 
+app.register_blueprint(book_bp)
+
 app.register_blueprint(home_bp)
-app.register_blueprint(nlp_test_bp)
 app.register_blueprint(search_bp)
 
 if __name__ == '__main__':
