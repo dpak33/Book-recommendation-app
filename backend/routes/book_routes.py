@@ -32,12 +32,15 @@ def combine_inputs():
     category_features = extract_features_from_categories(categories)
     description_features = extract_features_from_description(description)
 
+    # Flatten the book_features list to avoid sending list of lists
+    flattened_book_features = [feature for sublist in book_features for feature in sublist]
+
     combined_data = {
-        "book_features": book_features,
+        "book_features": flattened_book_features,
         "category_features": category_features,
         "description_features": description_features
     }
 
-    recommendations = recommend_books(book_features, category_features, description_features)
+    recommendations = recommend_books(flattened_book_features, category_features, description_features)
 
     return jsonify({"message": "Inputs combined successfully", "recommendations": recommendations}), 201

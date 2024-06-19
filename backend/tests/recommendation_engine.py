@@ -1,6 +1,5 @@
 import random
 
-
 # Mock database of books
 BOOK_DATABASE = [
     {"title": "To Kill a Mockingbird", "categories": ["fiction", "classic"], "description": "A novel about racism and injustice."},
