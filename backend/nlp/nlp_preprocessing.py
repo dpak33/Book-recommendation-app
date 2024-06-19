@@ -1,6 +1,10 @@
 import spacy
 from autocorrect import Speller
 from nltk.corpus import stopwords
+import nltk
+
+# Download stopwords
+nltk.download('stopwords')
 
 # Load spaCy English model
 nlp = spacy.load('en_core_web_sm')
