@@ -41,6 +41,6 @@ def combine_inputs():
         "description_features": description_features
     }
 
-    recommendations = recommend_books(flattened_book_features, category_features, description_features)
+    recommendations = recommend_books(category_features, description_features)
 
-    return jsonify({"message": "Inputs combined successfully", "recommendations": recommendations}), 201
+    return jsonify({"message": "Inputs combined successfully", "combined_data": combined_data, "recommendations": recommendations}), 201

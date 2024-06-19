@@ -8,14 +8,18 @@ BOOK_DATABASE = [
     # Add more books as needed
 ]
 
-def recommend_books(book_features, category_features, description_features):
+def recommend_books(category_features, description_features):
     recommendations = []
+
     for book in BOOK_DATABASE:
-        if any(feature in book["title"].lower() for feature in book_features) or \
-           any(feature in book["categories"] for feature in category_features) or \
-           any(feature in book["description"].lower() for feature in description_features):
+        if (
+            any(feature in book["categories"] for feature in category_features) or
+            any(feature in book["description"].lower() for feature in description_features)
+        ):
             recommendations.append(book)
+    
     if not recommendations:
         # If no matches, return random recommendations
         recommendations = random.sample(BOOK_DATABASE, 3)
+    
     return recommendations
